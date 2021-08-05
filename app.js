@@ -11,8 +11,8 @@ function digitalClock() {
   if (hours === 0) {
     hours = 12;
   }
-  if (hours > 12) {
-    hours - 12;
+  if (hours>12) {
+    hours = hours - 12;
     timeFormat = 'PM';
   }
   hours = hours < 10 ? '0' + hours : hours;
@@ -30,10 +30,8 @@ function digitalClock() {
 }
 digitalClock();
 
-// Date  code
-var today = new Date();
-var dd = String(today.getDate()).padStart(2, '0');
-var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-var yyyy = today.getFullYear();
-today = mm + '.' + dd + '.' + yyyy;
-document.querySelector('#today').innerText = today;
+// Show todays date
+
+let today = new Date();
+let options = {weekday : "short", month:"short", day:"numeric", year:"numeric"};
+document.querySelector('#today').innerText = today.toLocaleDateString("bn-BD", options);
